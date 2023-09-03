@@ -1,6 +1,5 @@
-#include <special-files/include/GL/glut.h>
+#include <GL/glut.h>
 #include <stdio.h>
-
 void inicializar()
 {
     glClearColor(1.0,1.0,0.0,0.0);
