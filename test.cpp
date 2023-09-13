@@ -63,19 +63,77 @@ void showAxis(){
 
 }
 
-void drawCube(float FCoriginX, float FCoriginY, int size){
+void moveFigure(float steps){ 
+
+
+
+
+}
+
+void keyboardControl(unsigned char key, int x, int y){
+	switch (key)
+	{
+	case 'w':
+		//move function
+		break;
+	
+	case 'd':
+		//move function
+		break;
+
+	case 's':
+		//move function
+		break;
+	
+	case 'a':
+		//move function
+		break;
+	
+	case 'i':
+		//rotate function
+		break;
+	
+	case 'l':
+		//rotate function
+		break;
+	
+	case 'k':
+		//rotate function
+		break;
+	
+	case 'j':
+		//rotate function
+		break;
+	
+
+
+
+	}
+
+}
+void drawCube(float FCoriginX, float FCoriginY, int size, int red, int green, int blue, float colorIntensityModifier){
 	// double = more precision, otherwise it makes the if > 0.2 part fail
 	double actualSize = (double) size / 10;
+	float strongestIlumination = 0.75;
+	float midIlumination = 0.5;
+	float weakestIlumination = 0.25;
 	
 	glBegin(GL_POLYGON);
 		// front
+		glColor3f(red * midIlumination * 3 / 4, green * midIlumination * 3 / 4, blue * midIlumination * 3 / 4);
 		glVertex2f(FCoriginX, FCoriginY);
+		glColor3f(red * midIlumination, green * midIlumination, blue * midIlumination);
 		glVertex2f(FCoriginX + actualSize, FCoriginY);
+		glColor3f(red * weakestIlumination, green * weakestIlumination, blue * weakestIlumination);
 		glVertex2f(FCoriginX + actualSize, FCoriginY + actualSize);
+		glColor3f(red * weakestIlumination, green * weakestIlumination, blue * weakestIlumination);
 		glVertex2f(FCoriginX, FCoriginY + actualSize);
-		glVertex2f(FCoriginX, FCoriginY);
 
-		// upper bit
+		glVertex2f(FCoriginX, FCoriginY);
+	
+	// upper bit
+	glEnd();
+	glBegin(GL_POLYGON);
 		float UBoriginX = FCoriginX;
 		float UBoriginY = FCoriginY + actualSize;
 		float specialSize;
@@ -85,18 +143,28 @@ void drawCube(float FCoriginX, float FCoriginY, int size){
 		else {
 			specialSize = 0.05;
 		}
+		glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
 		glVertex2f(UBoriginX, UBoriginY);
+		glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
 		glVertex2f(UBoriginX + actualSize, UBoriginY);
+		glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
 		glVertex2f(UBoriginX + actualSize + specialSize, UBoriginY + specialSize);
+		glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
 		glVertex2f(UBoriginX + specialSize, UBoriginY + specialSize);
 		glVertex2f(UBoriginX, UBoriginY);
+	glEnd();
 
-		// side
+	// side
+	glBegin(GL_POLYGON);
 		float SoriginX = UBoriginX + actualSize + specialSize;
 		float SoriginY = UBoriginY + specialSize;
+		glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
 		glVertex2f(SoriginX, SoriginY);
+		glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
 		glVertex2f(SoriginX, SoriginY - actualSize);
+		glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
 		glVertex2f(SoriginX - specialSize, SoriginY - actualSize - specialSize);
+		glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
 		glVertex2f(SoriginX - specialSize, SoriginY - specialSize);
 		glVertex2f(SoriginX, SoriginY);
 	glEnd();
@@ -104,12 +172,12 @@ void drawCube(float FCoriginX, float FCoriginY, int size){
 	
 
 }
-void render()
-{
-	
-	glClear(GL_COLOR_BUFFER_BIT);
+
+void drawTable(){
 	glColor3f(0,0,0);
 	glColor3f(0,255,0);
+	
+	// platform
 	glBegin(GL_POLYGON);
 	  glColor3f(0.125,0,0);
 	  glVertex2f(0,0.5);
@@ -119,12 +187,230 @@ void render()
 	  glVertex2f(0,-0.5);
 	  glColor3f(0.25,0,0);
 	  glVertex2f(-0.6,0.2);
-	  glColor3f(1,0,0);
-	  glVertex2f(-0.6,0.2);
+	  glVertex2f(0,0.5);
 	glEnd();
-	
-	glColor3f(0,0,1);
-	drawCube(0.15,0.18,1);
+
+	// table legs
+	float TLoriginX = 0;
+	float TLoriginY = -0.5;
+	glBegin(GL_POLYGON);
+		
+		glColor3f(1,0,0);
+		glVertex2f(TLoriginX,TLoriginY);
+		
+		glVertex2f(TLoriginX + 0.025, TLoriginY - -0.03);
+		glVertex2f(TLoriginX + 0.025, TLoriginY + -0.12);
+		glVertex2f(TLoriginX - 0.025, TLoriginY + -0.12);
+		glVertex2f(TLoriginX - 0.025, TLoriginY - -0.03);
+		glVertex2f(TLoriginX,TLoriginY);
+	glEnd();
+
+	TLoriginX = 0.6;
+	TLoriginY = 0.2;
+	glBegin(GL_POLYGON);
+		glColor3f(0.25,0,0);
+		glVertex2f(TLoriginX, TLoriginY);
+		glVertex2f(TLoriginX, TLoriginY - 0.12);
+		glVertex2f(TLoriginX - 0.03, TLoriginY - 0.12);
+		glVertex2f(TLoriginX - 0.03, TLoriginY - 0.03);
+		glVertex2f(TLoriginX, TLoriginY);
+	glEnd();
+
+	TLoriginX *= -1;
+	glBegin(GL_POLYGON);
+		glColor3f(0.25,0,0);
+		glVertex2f(TLoriginX, TLoriginY);
+		glVertex2f(TLoriginX, TLoriginY - 0.12);
+		glVertex2f(TLoriginX - -0.03, TLoriginY - 0.12);
+		glVertex2f(TLoriginX - -0.03, TLoriginY - 0.03);
+		glVertex2f(TLoriginX, TLoriginY);
+	glEnd();
+}
+
+void drawFirstTriangleStripFirstTablePart(){
+	glColor3f(0.125,0.125,0.125);
+	glBegin(GL_TRIANGLE_STRIP);
+		glColor3f(0.125,0.125,0.125);
+		glVertex2f(0.06,-0.01);
+		glColor3f(0.0625,0.0625,0.0625);
+		glVertex2f(-0.1,0.08);
+		glColor3f(0.5,0.5,0.5);
+		glVertex2f(0.04,-0.07);
+		glColor3f(0.5,0.5,0.5);
+		glVertex2f(-0.1,-0.07);
+	glEnd();
+}
+
+void drawFirstQuadSecondTablePart(){
+	glColor3f(0.125,0.125,0.125);
+	glBegin(GL_QUADS);
+		glColor3f(0.0625,0.0625,0.0625);
+		glVertex2f(0.088,0.083);
+		glColor3f(0.125,0.125,0.125);
+		glVertex2f(0.06,-0.01);
+		glColor3f(0.125,0.125,0.125);
+		glVertex2f(-0.03,0.04);
+		glColor3f(0.0625,0.0625,0.0625);
+		glVertex2f(0.01,0.125);
+		//glVertex2f(0.078,0.083);
+	glEnd();
+}
+
+void drawSecondQuadSecondTablePart(){
+	glColor3f(0.125,0.125,0.25);
+	glBegin(GL_QUADS);
+		glColor3f(0.0625,0.0625,0.0625);
+		glVertex2f(0.01,0.125);
+		glColor3f(0.125,0.125,0.125);
+		glVertex2f(-0.03,0.04);
+		glColor3f(0.0625,0.0625,0.0625);
+		glVertex2f(-0.1,0.08);
+		glColor3f(0.03125,0.03125,0.03125);
+		glVertex2f(-0.05,0.16);	
+	glEnd();
+}
+
+void drawSecondQuadStripThirdTablePart(){
+	glColor3f(0.03125,0.03125,0.03125);
+	glBegin(GL_QUAD_STRIP);
+		glVertex2f(-0.02,0.18);
+		glVertex2f(-0.05,0.16);
+		glVertex2f(0.02,0.16);
+		glVertex2f(0.01,0.125);
+		glVertex2f(0.10,0.12);
+		glVertex2f(0.088,0.083);
+	glEnd();
+}
+
+void drawFirstPolygonRightTableBorder(){
+	glColor3f(0.75,0.75,0.75);
+	glBegin(GL_POLYGON);
+		glColor3f(0.25,0.25,0.25);
+		glVertex2f(0.11,0.11);
+		glColor3f(0.75,0.75,0.75);
+		glVertex2f(0.05,-0.07);
+		glColor3f(0.75,0.75,0.75);
+		glVertex2f(0.04,-0.07);
+		glColor3f(0.25,0.25,0.25);
+		glVertex2f(0.10,0.12);
+		//glVertex2f(0.098,0.093);
+		
+	glEnd();
+}
+
+void drawSecondPolygonLeftTableBorder(){
+	glColor3f(0.75,0.75,0.75);
+	glBegin(GL_POLYGON);
+		glColor3f(0.5,0.5,0.5);
+		glVertex2f(0.05,0.16);
+		glColor3f(0.5,0.5,0.5);
+		glVertex2f(0.05,0.13);
+		glColor3f(0.125,0.125,0.125);
+		glVertex2f(-0.02,0.18);
+		glColor3f(0.125,0.125,0.125);
+		glVertex2f(-0.02,0.19);
+		glVertex2f(0.05,0.16);
+	glEnd();
+	glBegin(GL_POLYGON);
+		glColor3f(0.25,0.25,0.25);
+		glVertex2f(-0.06,0.17);
+		glColor3f(0.25,0.25,0.25);
+		glVertex2f(-0.05,0.16);
+		glColor3f(0.75,0.75,0.75);
+		glVertex2f(-0.1,0.08);
+		glColor3f(0.75,0.75,0.75);
+		glVertex2f(-0.11,0.09);
+		glVertex2f(-0.06,0.17);
+	glEnd();
+}
+
+void drawFirstTriangleTableBorderCorner(){
+	glColor3f(0.75,0.75,0.75);
+	glBegin(GL_TRIANGLES);
+		glColor3f(0.125,0.125,0.125);
+		glVertex2f(-0.02,0.19);
+		glColor3f(0.25,0.25,0.25);
+		glVertex2f(-0.06,0.17);
+		glColor3f(0.25,0.25,0.25);
+		glVertex2f(-0.05,0.16);
+	glEnd();
+}
+
+void drawSecondTriangleTableBorderCorner(){
+	glColor3f(0.75,0.75,0.75);
+	glBegin(GL_TRIANGLES);
+		glColor3f(0.125,0.125,0.125);
+		glVertex2f(-0.02,0.19);
+		glColor3f(0.125,0.125,0.125);
+		glVertex2f(-0.02,0.18);
+		glColor3f(0.25,0.25,0.25);
+		glVertex2f(-0.05,0.16);
+	glEnd();
+}
+
+void drawFirstQuadStripTV(){
+	glColor3f(0,1,0);
+	glBegin(GL_QUAD_STRIP);
+		glVertex2f(-0.27, 0.25);
+		glVertex2f(-0.25,0.20);
+		glVertex2f(-0.195,0.262);
+		glVertex2f(-0.195,0.19);
+		glVertex2f(-0.09,0.27);
+		glVertex2f(-0.12,0.18);		
+	glEnd();
+}
+
+void drawFirstLineColumnBorder(){
+	glColor3f(1,0.75,0.75);
+	glBegin(GL_LINES);
+		glVertex2f(0.04,0.15);
+		glVertex2f(0.065,0.245);
+	glEnd();
+}
+
+void drawSecondLineColumnBorder(){
+	glColor3f(1,0.75,0.75);
+	glBegin(GL_LINES);
+		glVertex2f(0.041,0.148);
+		glVertex2f(0.066,0.246);
+	glEnd();
+}
+
+void drawSecondTriangleStripColumn(){
+	glColor3f(0.0375,0.125,0.125);
+	glBegin(GL_TRIANGLE_STRIP);
+		glColor3f(0.55,0.25,0.25);
+		glVertex2f(0.14,0.24);
+		glColor3f(0.75,0.25,0.25);
+		glVertex2f(0.065,0.245);
+		glColor3f(0.55,0.25,0.25);
+		glVertex2f(0.14,0.14);
+		glColor3f(0.85,0.35,0.35);
+		glVertex2f(0.04,0.148);
+		glColor3f(0.55,0.25,0.25);
+		glVertex2f(0.13,0.10);
+	glEnd();
+
+
+}
+void render(){
+	glClear(GL_COLOR_BUFFER_BIT);
+	drawSecondPolygonLeftTableBorder();
+	drawFirstTriangleStripFirstTablePart();
+	drawFirstQuadSecondTablePart();
+	drawSecondQuadSecondTablePart();
+	drawSecondQuadStripThirdTablePart();
+	drawFirstPolygonRightTableBorder();
+
+	drawSecondTriangleStripColumn();
+	drawFirstLineColumnBorder();
+	drawSecondLineColumnBorder();
+	drawFirstQuadStripTV();
+	drawFirstTriangleTableBorderCorner();
+	drawSecondTriangleTableBorderCorner();
+	//drawTable();
+
+	//drawCube(-0.05,0.3,1,0,0,1,0);
 
 	showAxis();
 	glFlush();
