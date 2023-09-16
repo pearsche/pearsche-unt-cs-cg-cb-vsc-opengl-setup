@@ -111,6 +111,7 @@ void keyboardControl(unsigned char key, int x, int y){
 	}
 
 }
+
 void drawCube(float FCoriginX, float FCoriginY, int size, int red, int green, int blue, float colorIntensityModifier){
 	// double = more precision, otherwise it makes the if > 0.2 part fail
 	double actualSize = (double) size / 10;
@@ -393,8 +394,56 @@ void drawSecondTriangleStripColumn(){
 
 
 }
+
+float tx = 0;
+float ty = 0;
+int directionX = 1;
+int directionY = 1;
+void screensaverAnim(int value){
+	float posXLimit = 1.4;
+	float negXLimit = -2.8;
+	float posYLimit = 2.8;
+	float negYLimit = -0.7;
+	float step = 0.01;
+	// switch for x-axis movement
+	switch (directionX){
+		case 1:
+			if (tx + (posXLimit / 10) >= 1){
+				directionX *= -1;
+			}
+		break;
+	 case -1:
+		if (tx + (negXLimit / 10) <= -1){
+				directionX *= -1;
+			}
+		break;
+	}
+	tx += step * directionX;
+	// switch for y-axis movement
+	switch (directionY){
+		case 1:
+			if (ty + (posYLimit / 10) >= 1){
+				directionY *= -1;
+			}
+		break;
+	 case -1:
+		if (ty + (negYLimit / 10) <= -1){
+				directionY *= -1;
+			}
+		break;
+	}
+	ty += step * directionY;
+	glutPostRedisplay();
+	glutTimerFunc(10,screensaverAnim,1);
+}
+
 void render(){
 	glClear(GL_COLOR_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
+	
+	glLoadIdentity();
+	showAxis();
+	glTranslatef(tx,ty,0);
 	drawSecondPolygonLeftTableBorder();
 	drawFirstTriangleStripFirstTablePart();
 	drawFirstQuadSecondTablePart();
@@ -411,10 +460,13 @@ void render(){
 	//drawTable();
 
 	//drawCube(-0.05,0.3,1,0,0,1,0);
-
-	showAxis();
+	
+	
 	glFlush();
 }
+
+
+
 int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
@@ -426,6 +478,7 @@ int main(int argc, char** argv)
 	inicializar();
 
 	glutDisplayFunc(render);
+	glutTimerFunc(100,screensaverAnim,1);
 
 	glutMainLoop();
 
