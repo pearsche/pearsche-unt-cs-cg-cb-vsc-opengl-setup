@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 #include <iostream>
 #include <stdio.h>
+#include <cmath>
 
 void inicializar()
 {
@@ -112,66 +113,66 @@ void keyboardControl(unsigned char key, int x, int y){
 
 }
 
-void drawCube(float FCoriginX, float FCoriginY, int size, int red, int green, int blue, float colorIntensityModifier){
+void drawCube(float FCoriginX, float FCoriginY, int size, int red, int green, int blue, float scaleFactor){
 	// double = more precision, otherwise it makes the if > 0.2 part fail
 	double actualSize = (double) size / 10;
-	float strongestIlumination = 0.75;
-	float midIlumination = 0.5;
-	float weakestIlumination = 0.25;
-	
-	glBegin(GL_POLYGON);
-		// front
-		glColor3f(red * midIlumination * 3 / 4, green * midIlumination * 3 / 4, blue * midIlumination * 3 / 4);
-		glVertex2f(FCoriginX, FCoriginY);
-		glColor3f(red * midIlumination, green * midIlumination, blue * midIlumination);
-		glVertex2f(FCoriginX + actualSize, FCoriginY);
-		glColor3f(red * weakestIlumination, green * weakestIlumination, blue * weakestIlumination);
-		glVertex2f(FCoriginX + actualSize, FCoriginY + actualSize);
-		glColor3f(red * weakestIlumination, green * weakestIlumination, blue * weakestIlumination);
-		glVertex2f(FCoriginX, FCoriginY + actualSize);
+	glPushMatrix();
+		glScalef(scaleFactor,scaleFactor,scaleFactor);
+		float strongestIlumination = 0.75;
+		float midIlumination = 0.5;
+		float weakestIlumination = 0.25;
+		
+		glBegin(GL_POLYGON);
+			// front
+			glColor3f(red * midIlumination * 3 / 4, green * midIlumination * 3 / 4, blue * midIlumination * 3 / 4);
+			glVertex2f(FCoriginX, FCoriginY);
+			glColor3f(red * midIlumination, green * midIlumination, blue * midIlumination);
+			glVertex2f(FCoriginX + actualSize, FCoriginY);
+			glColor3f(red * weakestIlumination, green * weakestIlumination, blue * weakestIlumination);
+			glVertex2f(FCoriginX + actualSize, FCoriginY + actualSize);
+			glColor3f(red * weakestIlumination, green * weakestIlumination, blue * weakestIlumination);
+			glVertex2f(FCoriginX, FCoriginY + actualSize);
 
-		glVertex2f(FCoriginX, FCoriginY);
-	
-	// upper bit
-	glEnd();
-	glBegin(GL_POLYGON);
-		float UBoriginX = FCoriginX;
-		float UBoriginY = FCoriginY + actualSize;
-		float specialSize;
-		if ( actualSize > 0.2) {
-			specialSize =  actualSize - 0.2  ;
-		}
-		else {
-			specialSize = 0.05;
-		}
-		glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
-		glVertex2f(UBoriginX, UBoriginY);
-		glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
-		glVertex2f(UBoriginX + actualSize, UBoriginY);
-		glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
-		glVertex2f(UBoriginX + actualSize + specialSize, UBoriginY + specialSize);
-		glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
-		glVertex2f(UBoriginX + specialSize, UBoriginY + specialSize);
-		glVertex2f(UBoriginX, UBoriginY);
-	glEnd();
+			glVertex2f(FCoriginX, FCoriginY);
+		
+		// upper bit
+		glEnd();
+		glBegin(GL_POLYGON);
+			float UBoriginX = FCoriginX;
+			float UBoriginY = FCoriginY + actualSize;
+			float specialSize;
+			if ( actualSize > 0.2) {
+				specialSize =  actualSize - 0.2  ;
+			}
+			else {
+				specialSize = 0.05;
+			}
+			glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
+			glVertex2f(UBoriginX, UBoriginY);
+			glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
+			glVertex2f(UBoriginX + actualSize, UBoriginY);
+			glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
+			glVertex2f(UBoriginX + actualSize + specialSize, UBoriginY + specialSize);
+			glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
+			glVertex2f(UBoriginX + specialSize, UBoriginY + specialSize);
+			glVertex2f(UBoriginX, UBoriginY);
+		glEnd();
 
-	// side
-	glBegin(GL_POLYGON);
-		float SoriginX = UBoriginX + actualSize + specialSize;
-		float SoriginY = UBoriginY + specialSize;
-		glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
-		glVertex2f(SoriginX, SoriginY);
-		glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
-		glVertex2f(SoriginX, SoriginY - actualSize);
-		glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
-		glVertex2f(SoriginX - specialSize, SoriginY - actualSize - specialSize);
-		glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
-		glVertex2f(SoriginX - specialSize, SoriginY - specialSize);
-		glVertex2f(SoriginX, SoriginY);
-	glEnd();
-
-	
-
+		// side
+		glBegin(GL_POLYGON);
+			float SoriginX = UBoriginX + actualSize + specialSize;
+			float SoriginY = UBoriginY + specialSize;
+			glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
+			glVertex2f(SoriginX, SoriginY);
+			glColor3f(red * midIlumination * 1/ 5, green * midIlumination * 1/ 5, blue * midIlumination * 1/ 5);
+			glVertex2f(SoriginX, SoriginY - actualSize);
+			glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
+			glVertex2f(SoriginX - specialSize, SoriginY - actualSize - specialSize);
+			glColor3f(red * midIlumination * 3 / 5, green * midIlumination * 3 / 5, blue * midIlumination * 3 / 5);
+			glVertex2f(SoriginX - specialSize, SoriginY - specialSize);
+			glVertex2f(SoriginX, SoriginY);
+		glEnd();
+	glPopMatrix();
 }
 
 void drawTable(){
@@ -437,10 +438,185 @@ void screensaverAnim(int value){
 	glutTimerFunc(10,screensaverAnim,1);
 }
 
+void drawRamp(float originX, float originY){
+	glColor3f(0,0,0);
+	// 1
+	float lastX = originX;
+	float lastY = originY;
+	// sometimes needed
+	float helperX = 0;
+	float helperY = 0;
+	
+	glBegin(GL_POLYGON);
+		glColor3f(0.2,0,0);
+		glVertex2f(lastX,lastY);
+		glColor3f(0.125,0,0);
+		glVertex2f(lastX += 0.02, lastY += 0.01);
+		glColor3f(0.2,0,0);
+		glVertex2f(lastX += 0.13, lastY += -0.02);
+		glColor3f(0.225,0,0);
+		glVertex2f(lastX += -0.04, lastY += -0.01);
+		// with these we can calculate 2
+		helperX = lastX;
+		helperY = lastY;
+	glEnd();
+
+	// with the origins, lastX&Y we can calculate 4
+	// 4
+	glBegin(GL_POLYGON);
+		glColor3f(0.225,0,0);
+		glVertex2f(lastX,lastY);
+		glColor3f(0.15,0,0);
+		glVertex2f(lastX += -0.0155, lastY += -0.01);
+		glColor3f(0.125,0,0);
+		glVertex2f(lastX += -0.09, lastY += 0.01);
+		glColor3f(0.2,0,0);
+		glVertex2f(originX, originY);
+	glEnd();
+
+	// 2
+	glBegin(GL_POLYGON);
+		glColor3f(0.225,0,0);
+		glVertex2f(lastX = helperX, lastY = helperY);
+		glColor3f(0.2,0,0);
+		glVertex2f(lastX += 0.04, lastY += 0.01 );
+		glColor3f(0.5,0,0);
+		glVertex2f(lastX += -0.11, lastY += -0.07);
+		// for 3 and 5
+		helperX = lastX;
+		helperY = lastY;
+		glColor3f(0.625,0,0);
+		glVertex2f(lastX += -0.04, lastY += -0.01);
+	glEnd();
+
+	// 5
+	glColor3f(1,1,0);
+	glBegin(GL_POLYGON);
+		glColor3f(0.5,0,0);
+		glVertex2f(lastX = helperX, lastY = helperY);
+		glColor3f(0.2,0,0);
+		glVertex2f(lastX += 0.11, lastY += 0.07);
+		glColor3f(0.175,0,0);
+		glVertex2f(lastX, lastY += -0.02);
+		glColor3f(0.45,0,0);
+		glVertex2f(lastX += -0.08, lastY += -0.0575);
+	glEnd();
+
+	// 3
+	glBegin(GL_POLYGON);
+		glColor3f(0.5,0,0);
+		glVertex2f(lastX = helperX, lastY = helperY);
+		glColor3f(0.75,0,0);
+		glVertex2f(lastX += 0.16, lastY += -0.01);
+		glColor3f(0.875,0,0);
+		glVertex2f(lastX += -0.03, lastY += -0.02);
+		glColor3f(0.625,0,0);
+		glVertex2f(lastX += -0.17, lastY += 0.02);
+		helperX = lastX;
+		helperY = lastY;
+	glEnd();
+
+	// 6
+	glBegin(GL_POLYGON);
+		glColor3f(0.675,0,0);
+		glVertex2f(lastX = helperX, lastY = helperY);
+		glColor3f(0.75,0,0);
+		glVertex2f(lastX += 0.17, lastY += -0.02);
+		helperX = lastX;
+		helperY = lastY;
+		glColor3f(0.625,0,0);
+		glVertex2f(lastX, lastY += -0.02);
+		glColor3f(0.675,0,0);
+		glVertex2f(lastX += -0.17, lastY += 0.02);
+	glEnd();
+
+	// 7
+	glColor3f(0.5,0,0.5);
+	glBegin(GL_POLYGON);
+		glColor3f(0.75,0,0);
+		glVertex2f(lastX = helperX, lastY = helperY);
+		glColor3f(0.625,0,0);
+		glVertex2f(lastX += 0.03, lastY += 0.02);
+		glColor3f(0.625,0,0);
+		glVertex2f(lastX, lastY += -0.02);
+		glColor3f(0.75,0,0);
+		glVertex2f(lastX += -0.03, lastY += -0.02);
+	glEnd();
+
+}
+
+int directionA = -1;
+int directionB = 1;
+int collisionSelector = 3;
+int checkHelper = 1;
+int yAxisHelperCounter = 0;
+void moveCube(int value){
+	float posXLimit = 0.35;
+	float negXLimit = 0.32;
+
+	float collisionPointsX[4] = {0.05, 0.26, 0.05, 0.34};
+	float collisionPointsY[4] = {0, -0.03, -0.17, -0.21};
+
+	// set to the last, as we start from the bottom border
+
+	float step = 0.01;
+	float distanceX = ( collisionPointsX[collisionSelector] - collisionPointsX[collisionSelector - checkHelper] ) * 100 ;
+	float distanceY = ( collisionPointsY[collisionSelector] - collisionPointsY[collisionSelector - checkHelper] ) * 100;
+	int altitudeChangeSteps = ceil((distanceX / distanceY));
+	if (altitudeChangeSteps < 0) {
+		altitudeChangeSteps *= -1;
+	}
+	yAxisHelperCounter += 1;
+
+	if (yAxisHelperCounter >= altitudeChangeSteps) {
+		yAxisHelperCounter = 0;
+		ty += step * directionB;
+	}
+	
+	if (collisionSelector - checkHelper < 0 || collisionSelector - checkHelper > 3) {
+		checkHelper *= -1;
+		directionB *= -1;
+	}
+	switch (directionA){
+		case 1:
+			if (tx + posXLimit >= collisionPointsX[collisionSelector - checkHelper]){
+				directionA *= -1;
+				collisionSelector -= checkHelper;
+			}
+		break;
+	 case -1:
+		if (tx + negXLimit <= collisionPointsX[collisionSelector - checkHelper]){
+				directionA *= -1;
+				collisionSelector -= checkHelper;
+			}
+		break;
+	}
+	tx += step * directionA;
+	// fot the y axis
+	/*
+	switch (directionB){
+		case 1:
+			if (ty >= ( collisionPointsY[collisionSelector - checkHelper] - collisionPointsY[collisionSelector] ) ){
+				directionB *= -1;
+				
+			}
+		break;
+	 case -1:
+		if (ty <= ( collisionPointsY[collisionSelector - checkHelper] - collisionPointsY[collisionSelector]) ){
+				directionB *= -1;
+			}
+		break;
+	}*/
+	glutPostRedisplay();
+	glutTimerFunc(10,moveCube,1);
+}
+
 void render(){
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	
+	// below is the dvd screensaver animation code
+	/*
 	glLoadIdentity();
 	showAxis();
 	glTranslatef(tx,ty,0);
@@ -456,12 +632,29 @@ void render(){
 	drawSecondLineColumnBorder();
 	drawFirstQuadStripTV();
 	drawFirstTriangleTableBorderCorner();
-	drawSecondTriangleTableBorderCorner();
+	drawSecondTriangleTableBorderCorner();*/
+	
+	// below is the old code for the table+cube demo
 	//drawTable();
-
 	//drawCube(-0.05,0.3,1,0,0,1,0);
-	
-	
+	glPushMatrix();
+		glScalef(2,2,1);
+		drawRamp(0,0);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(tx,ty,0);
+		glPushMatrix();
+			glTranslatef(0.32,-0.21,1);
+			drawCube(0,0,1,0,1,0,0.25);
+		glPopMatrix();
+	glPopMatrix();
+
+	glPushMatrix();
+		
+	glPopMatrix();
+
+	showAxis();
 	glFlush();
 }
 
@@ -471,15 +664,16 @@ int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glutInitWindowSize(600,600);
+	glutInitWindowSize(1152,648);
+	glViewport( 0, 0, 1152, 648 );
 	glutInitWindowPosition(100,200);
 	glutCreateWindow("h0nk");
 
 	inicializar();
 
 	glutDisplayFunc(render);
-	glutTimerFunc(100,screensaverAnim,1);
-
+	//glutTimerFunc(100,screensaverAnim,1);
+	glutTimerFunc(100,moveCube,1);
 	glutMainLoop();
 
 	return 0;
