@@ -64,55 +64,6 @@ void showAxis(){
 
 }
 
-void moveFigure(float steps){ 
-
-
-
-
-}
-
-void keyboardControl(unsigned char key, int x, int y){
-	switch (key)
-	{
-	case 'w':
-		//move function
-		break;
-	
-	case 'd':
-		//move function
-		break;
-
-	case 's':
-		//move function
-		break;
-	
-	case 'a':
-		//move function
-		break;
-	
-	case 'i':
-		//rotate function
-		break;
-	
-	case 'l':
-		//rotate function
-		break;
-	
-	case 'k':
-		//rotate function
-		break;
-	
-	case 'j':
-		//rotate function
-		break;
-	
-
-
-
-	}
-
-}
-
 void drawCube(float FCoriginX, float FCoriginY, int size, int red, int green, int blue, float scaleFactor){
 	// double = more precision, otherwise it makes the if > 0.2 part fail
 	double actualSize = (double) size / 10;
@@ -400,6 +351,7 @@ float tx = 0;
 float ty = 0;
 int directionX = 1;
 int directionY = 1;
+float stepSmall = 0.001;
 void screensaverAnim(int value){
 	float posXLimit = 1.4;
 	float negXLimit = -2.8;
@@ -550,65 +502,230 @@ int directionB = 1;
 int collisionSelector = 3;
 int checkHelper = 1;
 int yAxisHelperCounter = 0;
-void moveCube(int value){
-	float posXLimit = 0.35;
-	float negXLimit = 0.32;
+float step = 0.01;
 
-	float collisionPointsX[4] = {0.05, 0.26, 0.05, 0.34};
-	float collisionPointsY[4] = {0, -0.03, -0.17, -0.21};
+/*
+float getLineSlope(float aX, float aY, float bX, float bY){
+	return (aY - bY) / (aX - bX);
+}
 
-	// set to the last, as we start from the bottom border
+float getLineC(float aX, float aY, float slope){
+	return aY - slope * aX;
+}
 
-	float step = 0.01;
+bool coordBelongsToLine(float aX, float aY, float slope, float C){
+	if (aY == (aX * slope) + C)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+void cubeMovement(unsigned char key, int x, int y){
+	// base limits
+	// left to right
+	float frontLimitX[2] = {0.32, 0.345};
+	float frontLimitY = -0.21;
+	float backLimitX[2] = {0.3325, 0.3575};
+	float backLimitY = -0.19875;
+	// ramp "limit" points, perhaps useless atm
+	float collisionPointsX[4] = {0.05, 0.25, 0.05, 0.35};
+	float collisionPointsY[4] = {0, -0.02, -0.17, -0.21};
+
+	// ramp boundaries, clockwise.
+	float rampFirstX[4] = {0, 0.02, 0.15, 0.11};
+	float rampFirstY[4] = {0, 0.01, -0.01, -0.02};
+
+	float rampSecondX[4] = {0.11, 0.15, 0.04, 0};
+	float rampSecondY[4] = {-0.02, -0.01, -0.08, -0.09};
+
+	float rampThirdX[4] = {0.04, 0.2, 0.17, 0};
+	float rampThirdY[4] = {-0.08, -0.09, -0.11, -0.09};
+
+	// the scale factor
+	for (int counter = 0; counter < 4; counter++){
+		rampFirstX[counter] *= 2;
+		rampFirstY[counter] *= 2;
+		rampSecondX[counter] *= 2;
+		rampSecondY[counter] *= 2;
+		rampThirdX[counter] *= 2;
+		rampThirdY[counter] *= 2;
+	}
+	
+	// the slope of each line 
+	float slopesRampFirst[4] = {0,0,0,0};
+	float slopesRampSecond[4] = {0,0,0,0};
+	float slopesRampThird[4] = {0,0,0,0};
+
+	float cRampFirst[4] = {0,0,0,0};
+	float cRampSecond[4] = {0,0,0,0};
+	float cRampThird[4] = {0,0,0,0};
+
+	// get the slopes
+	for (int counter = 0, helperCounter = 1; counter < 4; counter++){
+		if (counter >= 3)
+		{
+			helperCounter = 0;
+		} else
+		{
+			helperCounter = counter + 1;
+		}
+		slopesRampFirst[counter] = getLineSlope(rampFirstX[counter],rampFirstY[counter], rampFirstX[helperCounter], rampFirstY[helperCounter]);
+		slopesRampSecond[counter] = getLineSlope(rampSecondX[counter],rampSecondY[counter], rampSecondX[helperCounter], rampSecondY[helperCounter]);
+		slopesRampThird[counter] = getLineSlope(rampThirdX[counter],rampThirdY[counter], rampThirdX[helperCounter], rampThirdY[helperCounter]);
+
+		// get the C
+		cRampFirst[counter] = getLineC(rampFirstX[counter], rampFirstY[counter], slopesRampFirst[counter]);
+		cRampSecond[counter] = getLineC(rampSecondX[counter], rampSecondY[counter], slopesRampSecond[counter]);
+		cRampThird[counter] = getLineC(rampThirdX[counter], rampThirdY[counter], slopesRampThird[counter]);
+	}
+	// i have the cRamp values, i have each ramp part's slope, i have each X e Y of a line's edges...
+	float movementX = tx;
+	float movementY = ty;
+
+	// i start inside, so if a movement matches 
+	
+	switch (key)
+	{
+	
+		// moving to the left means i only have to check the left side of the box, as well as only the left side of any ramp border
+
+		case 'a':
+				if (!coordBelongsToLine(movementX - stepSmall, movementY, slopesRampThird[3], cRampThird[3])){
+					movementX -= stepSmall;
+					movementY += (stepSmall / 15);
+				}
+			break;
+		case 'd':
+			break;
+	}
+	tx = movementX;
+	ty = movementY;
+	glutPostRedisplay();
+}
+*/
+int xLock = 0;
+int yLock = 0;
+
+void moveCube(unsigned char key, int x, int y){
+	float posXLimit = 0.285;
+	float negXLimit = 0.3375;
+	float posYLimit = -0.195;
+	float negYLimit = -0.205;
+
+	// +xLock means can't move left anymore
+	// +yLock means can't move up anymore
+	switch (key){
+		case 'a':
+					if (tx - step >= -posXLimit)
+					{
+						tx -= step;
+						if (yLock) {
+							ty += (step / 9.5);
+						} else {
+							ty += (step / 11.75);
+						}
+					} else
+					{
+						xLock = 1;
+					}
+		break;
+		
+		case 'd':
+				if (yLock){ 
+					if (tx + step <= (posXLimit - negXLimit - 0.03))
+					{
+						tx += step;
+						ty -= (step / 9.5);
+					}
+				} else {
+					if (tx + step <= (negXLimit - (posXLimit + 0.06)))
+					{
+						tx += step;
+						ty -= (step / 11.75);
+					}
+				}
+		break;
+		
+		case 'w':
+				if (xLock && ty + step <= -posYLimit - 0.02)
+				{
+					tx += ( step * 1.25) ;
+					ty += step;
+				} else {
+					yLock = 1;
+				}
+		break;
+
+		case 's':
+				if (ty - step >= (negYLimit - posYLimit + 0.03) && yLock)
+				{
+					tx -= ( step * 1.25) ;
+					ty -= step;
+				} else
+				{
+					yLock = 0;
+				}
+		break;
+
+	default:
+		break;
+	}
+	
+	/*
 	float distanceX = ( collisionPointsX[collisionSelector] - collisionPointsX[collisionSelector - checkHelper] ) * 100 ;
 	float distanceY = ( collisionPointsY[collisionSelector] - collisionPointsY[collisionSelector - checkHelper] ) * 100;
-	int altitudeChangeSteps = ceil((distanceX / distanceY));
+	int altitudeChangeSteps = (distanceX / distanceY);
+	//float extraMoveY = ((distanceX / distanceY) - int (distanceX / distanceY));
 	if (altitudeChangeSteps < 0) {
 		altitudeChangeSteps *= -1;
 	}
 	yAxisHelperCounter += 1;
-
-	if (yAxisHelperCounter >= altitudeChangeSteps) {
-		yAxisHelperCounter = 0;
-		ty += step * directionB;
-	}
-	
 	if (collisionSelector - checkHelper < 0 || collisionSelector - checkHelper > 3) {
 		checkHelper *= -1;
 		directionB *= -1;
 	}
-	switch (directionA){
-		case 1:
-			if (tx + posXLimit >= collisionPointsX[collisionSelector - checkHelper]){
-				directionA *= -1;
-				collisionSelector -= checkHelper;
+	switch (key){
+		case 'd':
+			if (directionA == 1) {
+				if (tx + posXLimit >= collisionPointsX[collisionSelector - checkHelper]){
+					directionA *= -1;
+					collisionSelector -= checkHelper;
+				}
+				step = 0.01;
+			} else {
+				step = 0;
 			}
 		break;
-	 case -1:
-		if (tx + negXLimit <= collisionPointsX[collisionSelector - checkHelper]){
-				directionA *= -1;
-				collisionSelector -= checkHelper;
+	 	case 'a':
+	 		if (directionA == -1) {
+				if (tx + negXLimit <= collisionPointsX[collisionSelector - checkHelper]){
+					directionA *= -1;
+					collisionSelector -= checkHelper;
+				}
+				step = 0.01;
+			} else {
+				step = 0;
 			}
 		break;
 	}
 	tx += step * directionA;
-	// fot the y axis
-	/*
-	switch (directionB){
-		case 1:
-			if (ty >= ( collisionPointsY[collisionSelector - checkHelper] - collisionPointsY[collisionSelector] ) ){
-				directionB *= -1;
-				
-			}
-		break;
-	 case -1:
-		if (ty <= ( collisionPointsY[collisionSelector - checkHelper] - collisionPointsY[collisionSelector]) ){
-				directionB *= -1;
-			}
-		break;
-	}*/
+	if (yAxisHelperCounter >= altitudeChangeSteps) {
+		yAxisHelperCounter = 0;
+		ty += step * directionB;
+	}
+
+	*/
+	
+	
+	
+	
 	glutPostRedisplay();
-	glutTimerFunc(10,moveCube,1);
+}
+
+
+
+void moveFigure(float steps){ 
 }
 
 void render(){
@@ -616,8 +733,9 @@ void render(){
 	glMatrixMode(GL_MODELVIEW);
 	
 	// below is the dvd screensaver animation code
-	/*
+	
 	glLoadIdentity();
+	/*
 	showAxis();
 	glTranslatef(tx,ty,0);
 	drawSecondPolygonLeftTableBorder();
@@ -637,6 +755,9 @@ void render(){
 	// below is the old code for the table+cube demo
 	//drawTable();
 	//drawCube(-0.05,0.3,1,0,0,1,0);
+
+	//below is the code for ramp + cube movement demo
+	
 	glPushMatrix();
 		glScalef(2,2,1);
 		drawRamp(0,0);
@@ -653,7 +774,6 @@ void render(){
 	glPushMatrix();
 		
 	glPopMatrix();
-
 	showAxis();
 	glFlush();
 }
@@ -673,7 +793,8 @@ int main(int argc, char** argv)
 
 	glutDisplayFunc(render);
 	//glutTimerFunc(100,screensaverAnim,1);
-	glutTimerFunc(100,moveCube,1);
+	//glutTimerFunc(100,moveCube,1);
+	glutKeyboardFunc(moveCube);
 	glutMainLoop();
 
 	return 0;
