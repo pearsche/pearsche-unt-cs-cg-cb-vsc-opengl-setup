@@ -6,6 +6,7 @@
 void inicializar()
 {
 	glClearColor(1,1,1,1);
+	glEnable(GL_DEPTH_TEST);
 }
 
 // need to improve this
@@ -729,7 +730,7 @@ void moveFigure(float steps){
 }
 
 void render(){
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	
 	// below is the dvd screensaver animation code
@@ -775,7 +776,7 @@ void render(){
 		
 	glPopMatrix();
 	showAxis();
-	glFlush();
+	// glFlush();
 }
 
 

@@ -26,7 +26,7 @@
 				};
 				packages.default = pkgs.stdenv.mkDerivation {
 					name = "glTest";
-					src = ./test.cpp;
+					src = ./3dtest.cpp;
 					buildInputs = with pkgs; [
 						freeglut
 						libGL
@@ -39,9 +39,10 @@
 					];
 					dontUnpack = true;
 					buildPhase = ''
-						mkdir $out
+						mkdir -p $out/bin
 						echo $src
-						g++ $src -o $out/$name -lGL -lGLU -lglut 
+						g++ $src -o $out/bin/$name -lGL -lGLU -lglut 
+						
 					'';
 				};
 			}
