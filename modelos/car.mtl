@@ -1,0 +1,593 @@
+# Blender 4.0.2 MTL File: 'Sketchfab_2021_06_03_13_04_30.blend'
+# www.blender.org
+
+newmtl Brake_Caliper.001
+Ns 1.111113
+Ka 1.000000 1.000000 1.000000
+Kd 0.475310 0.475310 0.475310
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+
+newmtl DAMAGE_GLASS.004
+Ns 16.666662
+Ka 1.000000 1.000000 1.000000
+Kd 0.026336 0.026336 0.026336
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl EXT_AT_Light.001
+Ns 111.111099
+Ka 1.000000 1.000000 1.000000
+Ks 0.178000 0.178000 0.178000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/Glass_and_lights.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/Glass_and_lights_NM.dds
+
+newmtl EXT_Carpaint.004
+Ns 55.555424
+Ka 1.000000 1.000000 1.000000
+Kd 0.806953 0.099899 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl EXT_Carpaint_Aluminium.001
+Ns 16.666662
+Ka 1.000000 1.000000 1.000000
+Kd 0.026336 0.026336 0.026336
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl EXT_Carpaint_Plastic.001
+Ns 16.666662
+Ka 1.000000 1.000000 1.000000
+Kd 0.026336 0.026336 0.026336
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl EXT_Disc.001
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.500000 0.500000 0.500000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl EXT_Flat_Light.001
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.200000 0.200000 0.200000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/Glass_and_lights_NM.dds
+
+newmtl EXT_Front_Light.001
+Ns 27.777784
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/PlasticDetail.dds
+map_Ks /home/Documents/Porsche/texture/Lights_Chrome.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl EXT_Front_Light_chrome.001
+Ns 166.666672
+Ka 1.000000 1.000000 1.000000
+Ks 0.600000 0.600000 0.600000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/Lights_Chrome.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl EXT_Glass_Light_INT.001
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.468486 0.000000 0.034637
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl EXT_Glass_Windows.001
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.034612 0.034612 0.034612
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl EXT_Glass_Windows_black.001
+Ns 16.666662
+Ka 1.000000 1.000000 1.000000
+Kd 0.026336 0.026336 0.026336
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl EXT_Glass_light_EXT.001
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.468486 0.468486 0.468486
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl EXT_Logos.001
+Ns 810.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd /home/Documents/Porsche/texture/LOGO.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/LOGO_NM.dds
+
+newmtl EXT_Mechanics_Flat.001
+Ns 55.555561
+Ka 1.000000 1.000000 1.000000
+Kd 0.050000 0.050000 0.050000
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl EXT_Mechanics_aluminium.001
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.239064 0.233305 0.216518
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl EXT_Rim.004
+Ns 16.666662
+Ka 1.000000 1.000000 1.000000
+Kd 0.054145 0.054145 0.054145
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl EXT_Tyre.004
+Ns 33.333344
+Ka 1.000000 1.000000 1.000000
+Kd 0.300000 0.300000 0.300000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/Tyre_NM.dds
+
+newmtl EXT_caliper_AT.001
+Ns 11.111113
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd /home/Documents/Porsche/texture/caliper_colour.dds
+map_Ks /home/Documents/Porsche/texture/Caliper_DIF.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/Caliper_NM.dds
+
+newmtl EXT_grid.001
+Ns 16.666662
+Ka 1.000000 1.000000 1.000000
+Kd 0.026336 0.026336 0.026336
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl INT_Alcantara.004
+Ns 11.111113
+Ka 1.000000 1.000000 1.000000
+Kd 0.032789 0.032789 0.032789
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Belts.004
+Ns 27.777784
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/alcnt_bottom.dds
+map_Ks /home/Documents/Porsche/texture/INT_Belt.DDS
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/INT_Belt_NM.DDS
+
+newmtl INT_Carbon.001
+Ns 220.615204
+Ka 1.000000 1.000000 1.000000
+Kd 0.586179 0.586179 0.586179
+Ks 0.650000 0.650000 0.650000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl INT_Carpaint.004
+Ns 55.555561
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/metal_detail.dds
+map_Ks /home/Documents/Porsche/texture/INT_Occlusion.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Carpet_Base.001
+Ns 111.111099
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/Carpet.DDS
+map_Ks /home/Documents/Porsche/texture/INT_Occlusion.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Carpet_fine.001
+Ns 111.111099
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/Carpet.DDS
+map_Ks /home/Documents/Porsche/texture/INT_Occlusion.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Custom_Gauges.001
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd /home/Documents/Porsche/texture/INT_Custom_Gauge.dds
+
+newmtl INT_DECALS_Emissive.001
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd /home/Documents/Porsche/texture/INT_Decals_DIF.dds
+
+newmtl INT_DECALS_Emissive_REF.001
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+
+newmtl INT_DECALS_Flat.001
+Ns 38.888897
+Ka 1.000000 1.000000 1.000000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/INT_Decals_DIF.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/INT_Decals_NM.dds
+
+newmtl INT_DECALS_Flat_alfa.001
+Ns 44.444450
+Ka 1.000000 1.000000 1.000000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/INT_Decals_DIF.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/INT_Decals_NM.dds
+
+newmtl INT_DECALS_Flat_alfa_LOGOs.001
+Ns 1.111113
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd /home/Documents/Porsche/texture/alcnt_bottom.dds
+map_Ks /home/Documents/Porsche/texture/INT_Decals_DIF.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/INT_Decals_NM.dds
+
+newmtl INT_DECALS_Metal.001
+Ns 528.925659
+Ka 1.000000 1.000000 1.000000
+Kd 0.300000 0.300000 0.300000
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/INT_Decals_NM.dds
+
+newmtl INT_DECALS_Metal_alfa.001
+Ns 111.111099
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/INT_Decals_DIF.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/INT_Decals_NM.dds
+
+newmtl INT_DECALS_Plastic_base.001
+Ns 111.111099
+Ka 1.000000 1.000000 1.000000
+Kd 0.050894 0.050894 0.050894
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/INT_Decals_NM.dds
+
+newmtl INT_DECALS_Plastic_ref.001
+Ns 111.111099
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/INT_Decals_DIF.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/INT_Decals_NM.dds
+
+newmtl INT_DECALS_Rubber.001
+Ns 11.111113
+Ka 1.000000 1.000000 1.000000
+Ks 0.030000 0.030000 0.030000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/INT_Decals_DIF.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/INT_Decals_NM.dds
+
+newmtl INT_Extra_Belts.001
+Ns 27.777784
+Ka 1.000000 1.000000 1.000000
+Kd 0.096200 0.096200 0.096200
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/Extra_Belts_NM.dds
+
+newmtl INT_Gauges_AT.001
+Ns 50.000011
+Ka 1.000000 1.000000 1.000000
+Kd 0.380000 0.380000 0.380000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl INT_Glass.001
+Ns 277.777771
+Ka 1.000000 1.000000 1.000000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/INT_Glass.dds
+
+newmtl INT_Logo.001
+Ns 44.444450
+Ka 1.000000 1.000000 1.000000
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/LOGO.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/LOGO_NM.dds
+
+newmtl INT_Metal_Alu.001
+Ns 27.777784
+Ka 1.000000 1.000000 1.000000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/INT_Occlusion.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Metal_Rollbar.001
+Ns 55.555561
+Ka 1.000000 1.000000 1.000000
+Kd 0.809163 0.099668 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl INT_Plastic_Flat.001
+Ns 22.222227
+Ka 1.000000 1.000000 1.000000
+Kd 0.083294 0.083294 0.083294
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Plastic_Grey_satinata.001
+Ns 11.111113
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/PlasticDetail.dds
+map_Ks /home/Documents/Porsche/texture/INT_Occlusion.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Plastic_Speaker_Octagon.001
+Ns 22.222227
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/Speakers_octagon.dds
+map_Ks /home/Documents/Porsche/texture/INT_Occlusion.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Plastic_Speaker_base.001
+Ns 22.222227
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/Speakers.dds
+map_Ks /home/Documents/Porsche/texture/INT_Occlusion.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Skin_Grey.001
+Ns 67.576439
+Ka 1.000000 1.000000 1.000000
+Kd 0.011788 0.011788 0.011788
+Ks 0.102727 0.102727 0.102727
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Skin_Grey.002
+Ns 11.111113
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/leather_top.dds
+map_Ks /home/Documents/Porsche/texture/INT_Occlusion.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Skin_White.001
+Ns 11.111113
+Ka 1.000000 1.000000 1.000000
+Kd 0.809000 0.101934 0.000000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/FLAT_NM.dds
+
+newmtl INT_Stich.001
+Ns 22.222227
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/alcnt_bottom.dds
+map_Ks /home/Documents/Porsche/texture/INT_Stiches_DIFF.dds
+map_Bump -bm 1.000000 /home/Documents/Porsche/texture/INT_Stiches_NM.dds
+
+newmtl INT_Stickers.001
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd /home/Documents/Porsche/texture/INT_Stickers.dds
+
+newmtl INT_Windows.001
+Ns 11.111113
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd /home/Documents/Porsche/texture/INTERNAL_glass.dds
+
+newmtl MIRROR.001
+Ns 277.777771
+Ka 1.000000 1.000000 1.000000
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/Documents/Porsche/texture/Mirror.DDS
+
+newmtl Material.001
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.144689 0.124171 0.128808
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2

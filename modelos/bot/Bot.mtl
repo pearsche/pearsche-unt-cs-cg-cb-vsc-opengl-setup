@@ -1,0 +1,44 @@
+# Blender 4.0.2 MTL File: 'Bot.blend'
+# www.blender.org
+
+newmtl glass
+Kd 0.310932 0.310932 0.310932
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+Pr 0.000000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+Tf 1.000000 1.000000 1.000000
+
+newmtl glow
+Kd 0.013655 0.800000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Pr 0.500000
+Pm 0.000000
+
+newmtl rob_tex.003
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd Game_character_Albedo.png
+map_Pr Game_character_Roughness.png
+map_Bump -bm 1.000000 Game_character_Normal.png

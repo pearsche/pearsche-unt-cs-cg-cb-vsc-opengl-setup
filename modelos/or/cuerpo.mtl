@@ -1,0 +1,90 @@
+# Exported from Wings 3D 2.1.5
+newmtl default
+Ns 0.0
+d 1.0
+illum 2
+Kd 0.7898538076923077 0.8133333333333334 0.6940444444444445
+Ka 0.7898538076923077 0.8133333333333334 0.6940444444444445
+Ks 0.0 0.0 0.0
+Ke 0.0 0.0 0.0
+
+newmtl orcmale_Body12
+Ns 90.0
+d 1.0
+illum 2
+Kd 1.0 1.0 1.0
+Ka 0.25 0.25 0.25
+Ks 0.0 0.0 0.0
+Ke 0.0 0.0 0.0
+map_Kd orcmale_Body.tga
+
+newmtl orcmale_Body14
+Ns 90.0
+d 1.0
+illum 2
+Kd 1.0 1.0 1.0
+Ka 0.25 0.25 0.25
+Ks 0.0 0.0 0.0
+Ke 0.0 0.0 0.0
+map_Kd orcmale_Body.tga
+
+newmtl orcmale_Body16
+Ns 90.0
+d 1.0
+illum 2
+Kd 1.0 1.0 1.0
+Ka 0.25 0.25 0.25
+Ks 0.0 0.0 0.0
+Ke 0.0 0.0 0.0
+map_Kd orcmale_Body.tga
+
+newmtl orcmale_Body2
+Ns 90.0
+d 1.0
+illum 2
+Kd 1.0 1.0 1.0
+Ka 0.25 0.25 0.25
+Ks 0.0 0.0 0.0
+Ke 0.0 0.0 0.0
+map_Kd orcmale_Body.tga
+
+newmtl orcmale_Body4
+Ns 90.0
+d 1.0
+illum 2
+Kd 1.0 1.0 1.0
+Ka 0.25 0.25 0.25
+Ks 0.0 0.0 0.0
+Ke 0.0 0.0 0.0
+map_Kd orcmale_Body.tga
+
+newmtl orcmale_Body6
+Ns 90.0
+d 1.0
+illum 2
+Kd 1.0 1.0 1.0
+Ka 0.25 0.25 0.25
+Ks 0.0 0.0 0.0
+Ke 0.0 0.0 0.0
+map_Kd orcmale_Body.tga
+
+newmtl orcmale_Body8
+Ns 90.0
+d 1.0
+illum 2
+Kd 1.0 1.0 1.0
+Ka 0.25 0.25 0.25
+Ks 0.0 0.0 0.0
+Ke 0.0 0.0 0.0
+map_Kd orcmale_Body.tga
+
+newmtl orcmale_Body9
+Ns 90.0
+d 1.0
+illum 2
+Kd 0.0 0.0 0.0
+Ka 0.25 0.25 0.25
+Ks 1.0 1.0 1.0
+Ke 0.0 0.0 0.0
+map_Kd orcmale_Body.tga
+

@@ -1,0 +1,9 @@
+
+{
+"runArgs": [
+   "--userns=keep-id"
+ ],
+ "containerEnv": {
+   "HOME": "/home/node"
+ }
+}

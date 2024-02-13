@@ -114,23 +114,104 @@ void graficarEjes()
 // TODO: add articulated arms
 // TODO: divide arms in 2
 
+double rotHelper = 0;
+
+// all in degress
+// unless specified with an X, Y or Z
+// rotations happen in the Z axis
+
+double legRotation = 0;
+double armRotation = 0;
+double forearmRotation = 30;
+double headRotation = 0;
+double handRotation = 0;
+double fingerRotation = 0;
+double fingerRotationX = 0;
+double fingerRotationZ = 0;
+double bodyMovement = 0;
+double direction = 1;
+double bodyRotation = 0;
+
+// steps
+float stepLeg = 0.5;
+float stepArm = 1;
+float stepForearm = 1;
+float stepHand = 0.25;
+float stepHead = 0.25;
+float stepFinger = 0.25;
+float stepBody = 0.0375;
+float stepBodyRotation = 0.0625;
+// animation signals, just in case
+bool legSignal, armLock, forearmLock, headLock, handLock, fingerLock = false;
+
+void animateRobot(){
+	legRotation += stepLeg;
+	armRotation += stepArm;
+	forearmRotation += stepForearm;
+	headRotation += stepHead;
+	handRotation += stepHand;
+	fingerRotation += stepFinger;
+	bodyRotation += stepBodyRotation;
+	bodyMovement += stepBody;
+	// leg anim
+	if (legRotation >= 15 || legRotation <= -15 )
+	{
+		stepLeg *= -1;
+	}
+
+	if (armRotation >= 35 || armRotation <= -25 )
+	{
+		stepArm *= -1;
+	}
+
+	if (forearmRotation >= 60 || forearmRotation <= 0 )
+	{
+		stepForearm *= -1;
+	}
+
+	if (headRotation >= 15 || headRotation <= -15) {
+		stepHead *= -1;
+	}
+
+	if (handRotation >= 10 || handRotation <= -10) {
+		stepHand *= -1;
+	}
+
+	if (fingerRotation >= 7.5 || fingerRotation <= -7.5) {
+		stepFinger *= -1;
+	}
+	if (bodyRotation >= 2 || bodyRotation <= -2) {
+		stepBodyRotation *= -1;
+	}
+
+	glutPostRedisplay();
+}
+
 void drawRobot(){
 	
-	// Torso
+	
 	glColor3f(1,1,0);
+	glTranslated(bodyMovement,0,0);
+	// FIXME: perhaps implement making the robot turn around
+	// glRotated(direction,0,1,0);
+
 	glPushMatrix();
+		// Torso
+		glRotated(bodyRotation,1,0,0);
 		glTranslatef(0,4.75,0);
 		glutWireCube(2.5);
 		// Head
 		glColor3f(1,0,0);
 		glPushMatrix();
 			glTranslatef(0,3.75,0);
+			glRotated(headRotation,0,1,0);
 			glutWireSphere(2.5,20,20);
 		glPopMatrix();
 
 		// Left Leg
 		glColor3f(1,0,1);
 		glPushMatrix();
+			glRotated(legRotation,0,0,1);
 			glTranslatef(0,-3,0.5);
 			glScalef(0.125,0.675,0.125);
 			glutWireCube(5);
@@ -139,32 +220,40 @@ void drawRobot(){
 		// Right Leg
 		glColor3f(0.5,0,1);
 		glPushMatrix();
+			glRotated(-legRotation,0,0,1);
 			glTranslatef(0,-3,-0.5);
 			glScalef(0.125,0.675,0.125);
 			glutWireCube(5);
 		glPopMatrix();
 
-		// Left forearm
+		// Left arm
 		glColor3f(0.5,0,1);
 		glPushMatrix();
+			glRotated(-armRotation,0,0,1);
 			glTranslatef(0,0.03,1.75);
 			glScalef(0.125,0.5,0.125);
 			glutWireCube(5);
-			// left arm
+			// left forearm
 			glPushMatrix();
 				glColor3f(1,0,1);
-				glTranslatef(0,-3.7,0);
 				glScalef(1,0.5,1);
+				glTranslatef(0,-4.5,0);
+				glRotated(forearmRotation,0,0,1);
 				glutWireCube(5);
 				// left hand
 				glPushMatrix();
 					glColor3f(1,0,0);
-					glTranslatef(0,-3.90,0);
+					glRotated(handRotation,1,0,1);
+					glTranslatef(0,-2.85,0);
 					glScalef(1,0.5,1);
 					glutWireCube(5);
+					// fingers rotation
+					glRotated(fingerRotation,1,0,1);
 					// finger 1 
 						glPushMatrix();
 							glColor3f(0,1,1);
+							// fingers rotation
+							glRotated(fingerRotation,1,0,1);
 							glTranslatef(0,-4.75,0);
 							glScalef(0.25,0.75,0.25);
 							glutWireCube(5);
@@ -172,6 +261,8 @@ void drawRobot(){
 					// finger 2
 						glPushMatrix();
 							glColor3f(0,1,1);
+							// fingers rotation
+							glRotated(fingerRotation,1,0,1);
 							glTranslatef(0,-4.75,-2);
 							glScalef(0.25,0.75,0.25);
 							glutWireCube(5);
@@ -180,6 +271,8 @@ void drawRobot(){
 					// finger 3
 						glPushMatrix();
 							glColor3f(0,1,1);
+							// fingers rotation
+							glRotated(fingerRotation,1,0,1);
 							glTranslatef(0,-4.75,2);
 							glScalef(0.25,0.75,0.25);
 							glutWireCube(5);
@@ -188,27 +281,33 @@ void drawRobot(){
 			glPopMatrix();
 		glPopMatrix();
 
-		// Right forearm
+		// Right arm
 		glColor3f(0.5,0,1);
 		glPushMatrix();
+			glRotated(armRotation,0,0,1);
 			glTranslatef(0,0.03,-1.75);
 			glScalef(0.125,0.5,0.125);
 			glutWireCube(5);
-			// right arm
+			// right forearm
 			glPushMatrix();
 				glColor3f(1,0,1);
-				glTranslatef(0,-3.7,0);
 				glScalef(1,0.5,1);
+				glTranslatef(0,-4.5,0);
+				glRotated(forearmRotation,0,0,1);
 				glutWireCube(5);
 				// right hand
 				glPushMatrix();
 					glColor3f(1,0,0);
-					glTranslatef(0,-3.90,0);
+					glRotated(handRotation,1,0,-1);
+					glTranslatef(0,-2.85,0);
 					glScalef(1,0.5,1);
 					glutWireCube(5);
+					
 					// finger 1 
 						glPushMatrix();
 							glColor3f(0,1,1);
+							// fingers rotation
+							glRotated(fingerRotation,1,0,-1);
 							glTranslatef(0,-4.75,0);
 							glScalef(0.25,0.75,0.25);
 							glutWireCube(5);
@@ -216,6 +315,8 @@ void drawRobot(){
 					// finger 2
 						glPushMatrix();
 							glColor3f(0,1,1);
+							// fingers rotation
+							glRotated(fingerRotation,1,0,-1);
 							glTranslatef(0,-4.75,-2);
 							glScalef(0.25,0.75,0.25);
 							glutWireCube(5);
@@ -224,6 +325,8 @@ void drawRobot(){
 					// finger 3
 						glPushMatrix();
 							glColor3f(0,1,1);
+							// fingers rotation
+							glRotated(fingerRotation,1,0,-1);
 							glTranslatef(0,-4.75,2);
 							glScalef(0.25,0.75,0.25);
 							glutWireCube(5);
@@ -242,7 +345,7 @@ double viewX = 35;
 double viewY = 35;
 double viewZ = 35;
 
-void moveVision(unsigned char key, int x, int y){
+void controls(unsigned char key, int x, int y){
 	switch (key)
 	{
 	case 'a':
@@ -273,6 +376,18 @@ void moveVision(unsigned char key, int x, int y){
 		viewX = 35;
 		viewY = 35;
 		viewZ = 35;
+		bodyMovement = 0;
+		break;
+	case 'k':
+		rotHelper += 1;
+		break;
+
+	case 'l':
+		rotHelper -= 1;
+		break;
+
+	case 'c':
+		direction *= -1;
 		break;
 	}
 	//std::cout << "HEY";
@@ -287,9 +402,8 @@ void render(){
 	//glColor3f(0,0,0);
 	gluLookAt(viewX,viewY,viewZ, 0,0,0, 0,1,0);
 	//glutWireTeapot(10);
-	drawRobot();
 	graficarEjes();
-
+	drawRobot();
 	glutSwapBuffers();
 
 
@@ -310,8 +424,9 @@ int main(int argc, char** argv){
 	initialize();
 	
 	glutDisplayFunc(render);
-	glutKeyboardFunc(moveVision);
+	glutKeyboardFunc(controls);
 	glutReshapeFunc(resize);
+	glutIdleFunc(animateRobot);
 	glutMainLoop(); 
 	
 	return 0;

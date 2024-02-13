@@ -17,7 +17,7 @@
 						glew
 						SDL2
 						SDL2_image
-						glm
+						# glm
 						freetype
 					];
 					shellHook = ''
